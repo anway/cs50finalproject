@@ -1,0 +1,107 @@
+Design
+I wanted to make a calendar that was more intuitive or in tune with
+the way we interact with calendars on paper. As a result, I wanted 
+most of the interaction to be with day view, which displays the most
+information (times for all events and notes) and in a to-do list
+format because that is how we tend to think of our day.
+It was also important to me that day view (and the calendar as a whole)
+be willing to display overlapping events because that is the kind of
+thing that we need calendars for. In day view, overlap is handled by
+displaying all overlapping events in their own table cells in the
+same row, while nonoverlapping events get their own cell and row.
+Day view also
+has dynamic filters, which I implemented by using jquery to hide
+and display certain table cells. One unexpected problem that came up
+was that you couldn't determine how many events would overlap 
+beforehand, so you wouldn't know exactly how many cells would be in
+a row, so I made the resize script to handle this issue by resizing
+cells after any changes were made to day view. 
+
+I believe that week view also reflects how we think about the week;
+we don't necessarily care so much about the specific time as much
+as being able to see what's coming up and visually what blocks of
+time they occupy. This was the most difficult to implement because
+the tables were far less predictable than I expected, and I ended up
+nesting two sets of tables inside each other. Even though I've explicitly
+set the sizes of table rows in pixels, the cells still don't appear
+the same size (if we're comparing, say a cell with rowspan 2 and 2 cells
+with rowspan one: their heights will be different). It was also
+challenging being able to store information about each event for use
+later when the user needs to delete that event. I ended up doing so
+by attaching span tags with set id and class to each event, where id 
+and class contain useful information such as start and end time.
+Since overlapping events shared the same table cell, this was the
+only way to distinguish them from each other.
+
+Month view is like a typical calendar, but vastly simplified because
+I believe that we only really need a month calendar to see what day
+events are on, and not necessarily any details about them; we have
+other calendars and hierachy for that. The table for the month was not
+too difficult to make, but it was a pain getting the cells to remain
+a fixed size. Each cell also had a table composed of two cells within
+it, one cell for the day number and add event icon and one cell for
+the events of that day.
+
+In both week and month view the tables were printed first and then
+events were added afterwards using jquery, whereas with day view
+it made sense to go through the information and output html at the
+same time.
+
+Adding and deleting events in this calendaris also easy and unobstructive. The plus
+icons for adding events show up where they make sense to show up
+(by the day title in day view, by the day of the week in week view,
+and by each number on the calendar in month view). The cross icons
+for deleting events show up right next to the events that are meant
+to be deleted. In addition, the icons only show up when the mouse
+hovers over them (using some css). Adding events on day, week,
+and month views is also done through a popup div (css) that is hidden 
+until called up and which masks the background, another aspect
+that I believe makes the calendar more visually simple. Users don't
+have to specify any year, month, or date information when addding
+events from these views; this information is appended through jquery
+from information previously stored in tag ids and classes. I originally
+intended for there to be this simple way of adding events through
+the popup and then more advanced options through the Add Events link
+on the left nav bar, but I somehow forgot to implement that. It would
+have allowed for events stretching over multiple days and repeating
+events (hence the 'notoneday' regularly occuring filter).  
+
+
+The nav bars are also meant to be unobtrusive. Besides the filters bar, 
+there is a top nav bar that lets you advance backwards or forwards in
+the same view. This is done through arrows that are ony displayed
+when the mouse hovers over them (again, css). Another unobtrusive aspect
+of the calendar is that overflows are handled with scrollbars that
+appear only when the user mouses over the containing div (again, css),
+allowing calendars to be unlimited in size (which I think is the real
+advantage of web-based calendars vs paper ones).
+
+Other considerations: 
+
+day, week, and month views are reached through
+get so that these pages can be revisited. 
+
+Database design: not that great, but I was tight on time. I would
+have liked to be able to let users choose how many filters they wanted
+instead of arbitrarily assigning a number.
+
+Passing information between pages: also could have been better.
+Because I would need to reload the entire page after adding or deleting
+an event on month and week views, there was no way to avoid passing the
+entire array full of events for each page. There were two options:
+either pass the array to, say addevent.php, and then back, or pass
+the yr/month/date to addevent.php, let addevent query another time,
+and then pass back. Both ways seemed inefficient, and I did end up
+querying the database another time each time (even though only one
+event is either added or dropped). 
+
+copy and pasting text: this was something I did, especially in week
+view, where each day of the week had a row with its own name (ie
+$monrow, $tuerow...$sunrow) and so it was hard to avoid typing each
+one out over and over. This could probably be improved.
+Storing information in tags' id and class: this still feels like
+cheating to me, or at least bad markup. The information was very
+accessible because it was literally all on the page, but I feel like
+this if another area that could use some design improvement. 
+
+

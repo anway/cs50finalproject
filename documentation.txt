@@ -1,0 +1,48 @@
+Documentation
+	The project was originally made and run on the CS50 appliance.
+The files are organized similar to those in pset7, with a folder 
+called html for php controllers and with subfolders img for images, js
+for global scripts, and css for global css. There is also an includes
+folder with similar files, config, constants, and functions (global
+php functions).
+	An initial SQL table called users will need to be set up. This
+is detailed more in database.txt (unfortunately, my CS50 appliance 
+died today, and I had not exported the SQL to back it up).
+The users table has 13 columns: username, passwords, id, and filter1 
+through filter10. Each user then has their own table for their own
+events.
+	After setting up a user/logging in, the calendar should be
+usable. The first page upon login will be day view with today's date.
+Day view can be advanced or decremented. Events can also be added to
+the day in day view with the plus-image button. Once there are events
+to be seen, the right nav bar can be used to filter events, and events
+can be deleted by clicking on the x-image in each event's box. Each
+event will have its own box, but events that overlap in time will share
+a row.
+	The top nav bar can be used to go to week view or month view.
+From week view one returns to day view by clicking on the name of the
+day of the week in the first shaded row the week table. One can also
+advance or go backwards in week view with arrows and go to month view
+via the top nav bar. From month view one cannot return to week view,
+but one can go to day view by clicking the number of the appropriate
+day on the month calendar. In both week and month view the event
+filters must be applied with a submit button as opposed to day view,
+where this changes dynamically. 
+	One can add events in day view by clicked the +image next to
+the arrows for advancing/decrementing the date, in week view by 
+clicking the +image next to each name of the day of the week in the
+top row of the week table, which is shaded gray, and in month view
+by clicking the +image next to each number in the calendar. Events
+can be deleted from all views by clicking the x-images that appear
+next to the name of each events.
+	The way information is displayed: in day view, everything
+appears in a table. Events that overlap share the same row, while
+events without overlap have their own row. All events will have a
+corresponding start and end time except for all-day events. In week
+view, there is a table with 96 by 7 dimensions where each row corresponds
+to 15 minutes in the day and each column corresponds to a day of the
+week. OVerlapping events will be placed in the same cell, and they
+will be labeled from the start of the overlap to the end of the
+overlap rather than individually. In month view, each day has its own
+cell in a traditional month calendar, and times are not displayed;
+only events names are.

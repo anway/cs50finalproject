@@ -1,0 +1,236 @@
+/****************************************************************************
+ * styles.css
+ *
+ * Computer Science 50
+ * Problem Set 7
+ *
+ * Global CSS.
+ ***************************************************************************/
+/*top navigation bar containing links to month, week, day view as well as account info and logout*/
+#topnav
+{
+    background-color:rgb(238,238,238);
+    background-image:url("/img/graaybar.png");
+    background-repeat:repeat-x;
+    background-position:center;
+    padding:2px 5px 17px 5px;
+    font-family:Verdana, Arial, serif;
+    font-size:20px;
+    color:rgb(0,0,0);
+    width:100%;
+    height:20%;
+    left:0px;
+    right:0px;
+}
+em
+{
+    font-weight:bold;
+    font-style:normal;
+
+}
+#topnav a, 
+#leftnav a
+{
+    text-decoration:none;
+    color:rgb(0,0,0);
+}
+#topnav li
+{
+    display:inline;
+    padding-left:30px;
+    padding-right:30px;
+    vertical-align:middle;
+}
+#topnav ul
+{
+    text-align:center;
+}
+ul
+{
+    list-style:none;
+}
+/*separate top navigation and content*/
+#sep
+{
+    margin-top:5px;
+    margin-bottom:5px;
+}
+/*left navigation bar*/
+#leftnav
+{
+    background-color:rgb(238,238,238);
+    background-image:url("/img/graybar2.png");
+    display:inline-block;
+    background-repeat:repeat-y;
+    background-position:center;
+    padding:0px 0px 0px 0px;
+    font-family:Verdana, Arial, serif;
+    font-size:20px;
+    color:rgb(0,0,0);
+    width:15%;
+    position:absolute;
+    height:100%;
+    left:5px;
+    float:left;
+}
+/*right navigation bar containing filters*/
+#rightnav
+{
+    background-color:rgb(238,238,238);
+    background-image:url("/img/graybar2.png");
+    display:inline-block;
+    background-repeat:repeat-y;
+    background-position:center;
+    padding:0px 0px 0px 0px;
+    font-family:Verdana, Arial, serif;
+    font-size:20px;
+    color:rgb(0,0,0);
+    width:15%;
+    position:absolute;
+    height:100%;
+    right:5px;
+}
+/*everything not in the navigation bars*/
+#content
+{
+    display:inline-block;
+    margin-left: 15%;
+    margin-right: 85%;
+    float:left;
+    height:100%;
+    width:70%
+    
+}
+/*for filters in right nav*/
+table
+{
+    margin-top:0px;
+}
+/*for filters in right nav*/
+td input
+{
+    display:block;
+    float:left;
+    vertical-align:top;
+}    
+/*for filters in right nav to display properly*/
+td label
+{
+    display:block;
+    float:left;
+    width:80%;
+    word-wrap:break-word;
+    /*vertical-align:bottom;*/
+}
+/*main title of page i.e. main date info*/
+.toptitle
+{
+    text-align:center;
+    background-color:#000000;
+    font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+    font-size:40px;
+    color:#FFFFFF;
+    padding-top:10px;
+    padding-bottom:10px;
+    margin-left:3px;
+    margin-right:3px;
+}
+/*sizing the images in toptitle (arrows to go left and right in time and add event plus sign--all are forms*/
+.toptitle form input, #x
+{
+    width:20px;
+    height:auto;
+}
+/*images in toptitle (arrows to go left and right in time and add event plus sign--all are forms*/
+.toptitle form, .toptitle a img
+{
+    display:inline;
+    margin:0;
+}
+/*sizing the plus sign to add events in toptitle*/
+#plus
+{
+    width:10px;
+    height:auto;
+}
+/*ensures that arrows and plus sign shown only when mouse hovers over toptitle*/
+.toptitle form, .toptitle a img 
+{
+    visibility:hidden;
+}
+/*ensures that arrows and plus sign shown only when mouse hovers over toptitle*/
+.toptitle:hover form, .toptitle:hover a img,
+.toptitle:active form, .toptitle:active a img
+{
+    visibility:visible;
+}
+/*contains the rest of the content outside of toptitle*/
+#container
+{
+    height:370px;
+    width:920px;
+    overflow:hidden;
+    margin-top:5px;
+}
+/*when toptitle overflows, a scrollbar that appears only when the mouse is hovering is used to access overflowed information*/
+#container:hover
+{
+    overflow-y:auto;
+}
+
+ul
+{
+    margin-bottom:0px;
+    padding-bottom:0px;
+}
+#bottom
+{
+    /* shrink bottom's font size */
+    font-size: smaller;
+
+    /* surround with whitespace */
+    margin: 20px;
+
+    /* center contents */
+    text-align: center;
+}
+#middle .nav
+{
+    display: inline-block;
+}
+/*for add event popup div. based on online source*/
+#mask {
+	display: none;
+	background: #000; 
+	position: fixed; left: 0; top: 0; 
+	z-index: 10;
+	width: 100%; height: 100%;
+	opacity: 0.8;
+	z-index: 999;
+}
+/*for add event popup div. based on online source*/
+.addeventpopup{
+	display:none;
+	background: #fff;
+	padding: 10px; 	
+	border: 2px solid #ddd;
+	float: left;
+	font-size: 1.2em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+ 
+}
+img#x { /*Position the close button on popup div*/
+	float: right; 
+	margin: 0 0 0 0;
+}
+/*makes text field align with text in forms*/
+.formfield *{
+    vertical-align:top;
+}
+
+
+
+
+

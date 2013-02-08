@@ -1,0 +1,35 @@
+Database
+My CS50 Appliance died today, and I had not exported the SQL and backed
+it up, so I will have to describe the database instead.
+First there is a users table with 13 columns. The first is username,
+the second is password, another is id, and the last 10, 
+named filter1, filter2, etc through filter10, hold the name of the 
+filters. All columns are varchars, except for id, which is an integer
+and the primary key of the table with auto-increment as a property.
+I did consider the possibility of letting each person choose how
+many filter they wanted (which would mean maybe letting each person
+have their own filters table and then their own events table sized
+according to the filters table), but due to time contraints, I
+decided to impose an arbitrary limit on the number of filters instead.
+The first four filters have default values 'School', 'Work', 
+'Family', 'Extracurricular' just to represent how a typical student
+might organize themselves
+
+Each user then has his/her own table storing calendar events called
+tbl#, where # is the user's ID. This table has 19 columns: event,
+a varchar representing the event's name (can't be null), and notes, a varchar to 
+store any notes the user may have regarding the event are the first 
+two (can be null). start and end are decimals with 3 decimal digits (necessary
+to guarantee 2 decimal precision) and 5 digits total. They both have default value 0.000.
+Also, they range from
+0.000 to 24.000 and represent time. The integer portion represents
+the hour without am/pm, and the decimal part, which ranges from .00 to
+.60, represents the minutes divided by 100. Helper functions can
+be called to convert time formatted this way to time as we know it.
+Three integer columns, year, month, and day, cannot be null and
+represent what their names suggest.
+The last 12 columns represent filters and have default value 0. Their names
+are allday (when an event is added to the database, a check is made to ensure
+that an event with allday==1 has start==end==0.000), notonetime (for regular
+events), and filter1, filter2, etc..., filter10 for the 10 user-selected
+filters.    
